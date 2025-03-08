@@ -62,16 +62,6 @@ if input_message:
             # 商品の詳細情報を表示
             ft.display_product(product)
 
-            # 在庫状況を表示
-            stock_status = product.get("stock_status", "")
-            if stock_status == ct.STOCK_STATUS_AVAILABLE:
-                st.success(f"在庫状況: {ct.STOCK_STATUS_AVAILABLE}")
-            elif stock_status == ct.STOCK_STATUS_FEW_LEFT:
-                st.warning(f"在庫状況: {ct.STOCK_STATUS_FEW_LEFT}")
-            elif stock_status == ct.STOCK_STATUS_NONE:
-                st.error(f"在庫状況: {ct.STOCK_STATUS_NONE}")
-
-
             
     # メッセージ一覧に追加
     st.session_state.messages.append({"role": "user", "content": input_message})
