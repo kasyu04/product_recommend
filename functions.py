@@ -64,17 +64,15 @@ def display_product(product):
             価格：{product['price']}
     """)
 
-    # 在庫状況の表示
-    stock_status = product.get("stock_status", "")
-    if stock_status == ct.STOCK_STATUS_AVAILABLE:
-        st.success(f"在庫状況: {ct.STOCK_STATUS_AVAILABLE}")
-    elif stock_status == ct.STOCK_STATUS_FEW_LEFT:
-        st.warning(f"在庫状況: {ct.STOCK_STATUS_FEW_LEFT}")
-    elif stock_status == ct.STOCK_STATUS_NONE:
-        st.error(f"在庫状況: {ct.STOCK_STATUS_NONE}")
-
     st.code(f"""
         商品カテゴリ：{product['category']}\n
         メーカー：{product['maker']}\n
         評価：{product['score']}({product['review_number']}件)
     """, language=None, wrap_lines=True)
+    st.image(f"images/products/{product['file_name']}", width=400)
+    st.code(f"""
+        {product['description']}
+    """, language=None, wrap_lines=True)
+    st.markdown("**こんな方におすすめ！**")
+    st.info(product["recommended_people"])
+    st.link_button("商品ページを開く", type="primary", use_container_width=True, url="https://google.com")
