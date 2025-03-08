@@ -8,6 +8,7 @@ from typing import List
 from sudachipy import tokenizer, dictionary
 from dotenv import load_dotenv
 import streamlit as st
+import constants as ct  # ここで constants.py をインポート
 
 load_dotenv()
 
