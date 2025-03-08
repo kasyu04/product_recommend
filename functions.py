@@ -78,10 +78,3 @@ def display_product(product):
         メーカー：{product['maker']}\n
         評価：{product['score']}({product['review_number']}件)
     """, language=None, wrap_lines=True)
-    st.image(f"images/products/{product['file_name']}", width=400)
-    st.code(f"""
-        {product['description']}
-    """, language=None, wrap_lines=True)
-    st.markdown("**こんな方におすすめ！**")
-    st.info(product["recommended_people"])
-    st.link_button("商品ページを開く", type="primary", use_container_width=True, url="https://google.com")

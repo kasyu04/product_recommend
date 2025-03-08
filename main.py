@@ -62,6 +62,12 @@ if input_message:
             # 商品の詳細情報を表示
             ft.display_product(product)
 
+            # 在庫状況に応じたメッセージを表示
+            stock_status = product.get("stock_status", "")
+            if stock_status == ct.STOCK_STATUS_FEW_LEFT:
+                st.warning("ご好評につき、在庫が残りわずかです。購入を希望の場合、お早めのご注文をおすすめいたします。")
+            elif stock_status == ct.STOCK_STATUS_NONE:
+                st.error("申し訳ございませんが、本商品は在庫切れとなっております。入荷までもうしばらくお待ち下さい。")
             
     # メッセージ一覧に追加
     st.session_state.messages.append({"role": "user", "content": input_message})
