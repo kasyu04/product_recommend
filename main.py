@@ -59,6 +59,9 @@ if input_message:
             product_lines = result[0].page_content.split("\n")
             product = {item.split(": ")[0]: item.split(": ")[1] for item in product_lines}
 
+            # 商品の詳細情報を表示
+            ft.display_product(product)
+
             # 在庫状況を表示
             stock_status = product.get("stock_status", "")
             if stock_status == ct.STOCK_STATUS_AVAILABLE:
@@ -68,9 +71,6 @@ if input_message:
             elif stock_status == ct.STOCK_STATUS_NONE:
                 st.error(f"在庫状況: {ct.STOCK_STATUS_NONE}")
 
-            # 商品の詳細情報を表示
-            ft.display_product(product)
-            
 
             
     # メッセージ一覧に追加
